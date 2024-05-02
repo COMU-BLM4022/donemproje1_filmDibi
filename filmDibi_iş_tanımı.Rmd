@@ -48,3 +48,25 @@ date: "2024-05-01"
 - **Gerçek Dünya Rakipleri:** IMDb, Rotten Tomatoes gibi platformlar.
 - **Rakip Avantajları ve Dezavantajları:** Avantajımız: Daha tutarlı öneri sistemi.Dezavantajımız: Rakip firmaların tanınmış olması.
 
+### Q4 İyileştirme Stratejisi:
+
+- **Projenin Son Döneminde R Kodu ile Veri Analizi:** 
+
+-Kullanıcılara beğendikleri filme yakın bir film önerilir. Kullanıcı bir film girer;filmin puanı, türü, yönetmeni, aktörleri, senaristi gibi unsurlara bakarak öneri yapar. Kullanıcının izlediği filmleri önermez.
+
+-Kullanıcıların izlediği filmlere göre sitede reklam gösterilecek. Bilim kurgu izlemişse, teknoloji ürünleri. Sporla ilgili filmler izlemişse, spor ekipmanları. Doğa ile ilgili filmler izliyorsa, kamp ekipmanı gibi reklamlar çıkarılacak.
+
+-Kullanıcıların son dönemlerde hangi filimleri daha çok sevdiği belirlenerek, geleckte film sütüdyalarının hangi film tarzlarında film çekmeleri gerektiği tespit edilebilir.
+
+-Bir kullanıcının film izleme alışkanlıkları tespit edilip, 3. parti şirketlere bunun bilgisi satılabilir. 3. parti firmalarda: Kullanıcıya özel kişiselleştirilmiş reklamlar yayınlayabilirler.
+
+
+
+
+#### hazırlayanlar:
+- Hamza Alpaslan 190401053
+- Hameem Alyafai 190401082
+- Nazik Ashyrova 190401115
+- Ömer Faruk Bozkaya 200401057
+
+
