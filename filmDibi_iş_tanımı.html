@@ -10,8 +10,9 @@
 
 
 
+<meta name="date" content="2024-05-01" />
 
-<title>filmDibi_iş_tanımı.knit</title>
+<title>Film puanlama sitesi</title>
 
 <script>// Pandoc 2.9 adds attributes on both header and div. We remove the former (to
 // be compatible with the behavior of Pandoc < 2.8).
@@ -348,11 +349,66 @@ display: none;
 
 
 
+<h1 class="title toc-ignore">Film puanlama sitesi</h1>
+<h4 class="date">2024-05-01</h4>
 
 </div>
 
 
-
+<div id="q1-ims-platformunun-belirlenmesi" class="section level3">
+<h3>Q1 IMS Platformunun Belirlenmesi:</h3>
+<ul>
+<li><p><strong>Platformun İsmi:</strong> WordPress</p></li>
+<li><p><strong>Lisansı:</strong> GNU General Public License
+(GPL)</p></li>
+<li><p><strong>Kısa Tarihçesi:</strong> WordPress, 2003 yılında Matt
+Mullenweg ve Mike Little tarafından oluşturulan açık kaynaklı bir içerik
+yönetim sistemidir. Başlangıçta bir blog platformu olarak
+tasarlanmıştır, ancak zamanla geniş bir web sitesi oluşturma aracına
+dönüşmüştür.</p></li>
+<li><p><strong>Platformun Kullanıcıya Sunduğu Özellikler:</strong></p>
+<ul>
+<li>Kullanıcı dostu bir arayüz</li>
+<li>Kolay kurulum ve güncelleme imkanı</li>
+<li>Geniş tema ve eklenti desteği</li>
+<li>Çeşitli içerik türlerini destekleme (makaleler, görseller, videolar,
+vs.)</li>
+</ul></li>
+<li><p><strong>Kullandığı Yazılım ve Teknolojiler:</strong></p>
+<ul>
+<li>PHP programlama dili</li>
+<li>MySQL veritabanı</li>
+<li>Web sunucusu olarak genellikle Apache veya Nginx kullanılır</li>
+</ul></li>
+<li><p><strong>API ve Özellikleri:</strong> WordPress, REST API
+aracılığıyla çeşitli özellikler sunar:</p>
+<ul>
+<li>İçerik oluşturma, güncelleme, silme</li>
+<li>Kullanıcı yönetimi</li>
+<li>Tema ve eklenti yönetimi</li>
+</ul></li>
+<li><p><strong>Seçim Nedenleri:</strong> WordPress’in seçiminde
+kullanıcı dostu arayüzü, geniş tema ve eklenti desteği, açık kaynaklı
+olması ve yaygın kullanımı gibi faktörler etkili olmuştur.</p></li>
+</ul>
+</div>
+<div id="q2-dataset-tanımı" class="section level3">
+<h3>Q2 Dataset Tanımı:</h3>
+<ul>
+<li><strong>Veri Setinin Adresi:</strong> TMDb API.</li>
+<li><strong>İçeriği:</strong> Filmlere ait bilgiler (ad, tür, oyuncular,
+yönetmen, puanlar vb.)</li>
+<li><strong>Verinin Üretildiği Şartlar:</strong> Film sütüdyoları
+tarafından elle girilmiştirr.</li>
+<li><strong>Verinin Formatı:</strong> JSON.</li>
+<li><strong>Boyutu:</strong> Belirtilmemiştir.</li>
+<li><strong>İthalat Yolu:</strong> WordPress’in veritabanı içine
+verilerin import edilmesi planlanır.</li>
+<li><strong>R İle Veri Çekme:</strong> WordPress’in REST API’sini
+kullanarak veya doğrudan veritabanı üzerinden R kodu ile veri çekme
+planlanır.</li>
+</ul>
+</div>
 
 
 
