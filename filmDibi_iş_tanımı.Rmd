@@ -37,3 +37,14 @@ date: "2024-05-01"
 - **Boyutu:** Belirtilmemiştir.
 - **İthalat Yolu:** WordPress'in veritabanı içine verilerin import edilmesi planlanır.
 - **R İle Veri Çekme:** WordPress'in REST API'sini kullanarak veya doğrudan veritabanı üzerinden R kodu ile veri çekme planlanır.
+
+### Q3 İş Tanımı:
+
+- **İş / Kuruluşun Tanımı:** Film puanlama sitesi işletmesi.
+- **Aktiviteleri:** Film bilgilerinin yönetimi ve puanlarının takibi.
+- **Rutin Operasyonlar:** Veritabanı yönetimi, günlük/haftalık içerik güncellemeleri, kullanıcı desteği.
+- **Gelir Modeli:** Reklam gelirleri, premium üyelikler, sponsorluklar.
+- **Zorluklar ve Avantajlar:** Zorluklar arasında rekabetin yoğunluğu, güncel içerik sağlamanın zorluğu bulunurken, avantajlar arasında geniş kullanıcı kitlesi ve reklam gelirleri bulunur.
+- **Gerçek Dünya Rakipleri:** IMDb, Rotten Tomatoes gibi platformlar.
+- **Rakip Avantajları ve Dezavantajları:** Avantajımız: Daha tutarlı öneri sistemi.Dezavantajımız: Rakip firmaların tanınmış olması.
+
