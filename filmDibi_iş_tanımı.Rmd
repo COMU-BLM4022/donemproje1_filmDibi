@@ -1,0 +1,29 @@
+---
+title: "Film puanlama sitesi"
+output: html_document
+date: "2024-05-01"
+---
+
+### Q1 IMS Platformunun Belirlenmesi:
+
+- **Platformun İsmi:** WordPress
+- **Lisansı:** GNU General Public License (GPL)
+- **Kısa Tarihçesi:** WordPress, 2003 yılında Matt Mullenweg ve Mike Little tarafından oluşturulan açık kaynaklı bir içerik yönetim sistemidir. Başlangıçta bir blog platformu olarak tasarlanmıştır, ancak zamanla geniş bir web sitesi oluşturma aracına dönüşmüştür.
+
+- **Platformun Kullanıcıya Sunduğu Özellikler:**
+  - Kullanıcı dostu bir arayüz
+  - Kolay kurulum ve güncelleme imkanı
+  - Geniş tema ve eklenti desteği
+  - Çeşitli içerik türlerini destekleme (makaleler, görseller, videolar, vs.)
+
+- **Kullandığı Yazılım ve Teknolojiler:**
+  - PHP programlama dili
+  - MySQL veritabanı
+  - Web sunucusu olarak genellikle Apache veya Nginx kullanılır
+
+- **API ve Özellikleri:** WordPress, REST API aracılığıyla çeşitli özellikler sunar:
+  - İçerik oluşturma, güncelleme, silme
+  - Kullanıcı yönetimi
+  - Tema ve eklenti yönetimi
+
+- **Seçim Nedenleri:** WordPress'in seçiminde kullanıcı dostu arayüzü, geniş tema ve eklenti desteği, açık kaynaklı olması ve yaygın kullanımı gibi faktörler etkili olmuştur.
