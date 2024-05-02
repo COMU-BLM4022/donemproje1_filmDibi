@@ -27,3 +27,13 @@ date: "2024-05-01"
   - Tema ve eklenti yönetimi
 
 - **Seçim Nedenleri:** WordPress'in seçiminde kullanıcı dostu arayüzü, geniş tema ve eklenti desteği, açık kaynaklı olması ve yaygın kullanımı gibi faktörler etkili olmuştur.
+
+### Q2 Dataset Tanımı:
+
+- **Veri Setinin Adresi:** TMDb API.
+- **İçeriği:** Filmlere ait bilgiler (ad, tür, oyuncular, yönetmen, puanlar vb.)
+- **Verinin Üretildiği Şartlar:** Film sütüdyoları tarafından elle girilmiştirr.
+- **Verinin Formatı:** JSON.
+- **Boyutu:** Belirtilmemiştir.
+- **İthalat Yolu:** WordPress'in veritabanı içine verilerin import edilmesi planlanır.
+- **R İle Veri Çekme:** WordPress'in REST API'sini kullanarak veya doğrudan veritabanı üzerinden R kodu ile veri çekme planlanır.
