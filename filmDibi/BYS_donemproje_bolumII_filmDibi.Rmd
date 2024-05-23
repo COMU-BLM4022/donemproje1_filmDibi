@@ -1,0 +1,17 @@
+---
+title: "Bilgi Yönetim Sistemleri - Bitirme Projesi Rapor :"
+author: 
+  - "Hamza Alpaslan 190401053"
+  - "Ömer Faruk Bozkaya 200104057"
+  - "Nazik Ashyrova 190401115"
+  - "Hameem Alyafai 190401082"
+date: "`r Sys.Date()`"
+output: html_document
+---
+
+# Q1: İş probleminin tanımı
+
+  Film öneri işletmesi olarak , kullanıcıların izlediği filmler üzerinden film değerlendirmesi yaparak kullanıcılara önerilerde bulunuyoruz . Veri seti olarak **TMDb API** kullanıyorduk fakat veri miktarının az olması nedeniyle veri setimizi değiştirdik . Yeni veri setimizi **Kaggle**'dan bulduk ve bundan sonra o veri setini kullanacağız . BYS platformu olarak **Wordpress** kullanmamızdaki nedenlerimiz ; Kullanıcı dostu arayüze sahip olması , Geniş tema ve eklenti desteğinin bulunması , açık kaynak olması ve yaygın kullanıma sahip olmasıdır . Platformumuzu oluştururken Worpress'in şu pluginleri kullanmaktayız 
+
+- **TablePress**: WordPress sitenize kolayca tablo eklemenizi sağlayan bir eklentidir. Bu eklenti ile filmler arasından arama yapıp görüntüleyebiliyoruz.
+- **WPForms**:  WordPress sitenizde formlar oluşturmanıza olanak tanıyan bir sürükle ve bırak form oluşturucu eklentisidir.Bu eklentiyle kullanıcılardan bir film girdisi alıyoruz. 
