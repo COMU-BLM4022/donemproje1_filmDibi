@@ -15,3 +15,45 @@ output: html_document
 
 - **TablePress**: WordPress sitenize kolayca tablo eklemenizi sağlayan bir eklentidir. Bu eklenti ile filmler arasından arama yapıp görüntüleyebiliyoruz.
 - **WPForms**:  WordPress sitenizde formlar oluşturmanıza olanak tanıyan bir sürükle ve bırak form oluşturucu eklentisidir.Bu eklentiyle kullanıcılardan bir film girdisi alıyoruz. 
+
+# Q2: Veri Setinin Detayları
+IMDb'nin en iyi 1000 film ve TV şovu verilerini içermektedir. Veri seti, [Kaggle'dan](https://www.kaggle.com/datasets/harshitshankhdhar/imdb-dataset-of-top-1000-movies-and-tv-shows) alınmıştır.
+
+
+### Veri Setinin İçeriği
+
+Veri seti aşağıdaki sütunları içermektedir:
+
+- **Poster_Link**: Filmin veya TV şovunun posterinin URL'si
+- **Series_Title**: Filmin veya TV şovunun başlığı
+- **Released_Year**: Yayınlanma yılı
+- **Certificate**: Sertifika (ör. PG-13, R)
+- **Runtime**: Süre
+- **Genre**: Tür
+- **IMDB_Rating**: IMDb puanı
+- **Overview**: Filmin veya TV şovunun özeti
+- **Meta_score**: Metacritic puanı
+- **Director**: Yönetmen
+- **Star1**, **Star2**, **Star3**, **Star4**: Başroldeki oyuncular
+- **No_of_Votes**: Oy sayısı
+- **Gross**: Brüt gelir
+
+### Veriyi Toplayan/Yaratanlar
+
+Bu veri setini oluşturan Harshit Shankhdhar, IMDb web sitesinden scraping yaparak bu verileri elde etmiştir. Scraping, web sitelerindeki bilgileri programlı bir şekilde toplayarak yapılandırılmış veri haline getirme işlemidir.
+
+### Veride Yapılan Değişiklikler
+
+ **Word press'de resimlerin gösterimi**: Poster resimleri veride link şeklinde bulunuyordu. Word press'de bu resimlerin gözükebilmesi için resimleri html dilinde siteden çekmek gerekiyordu. Exxelde poster linki sutunundaki bütün linklerin başına  <img src=" şeklinde ekleme yaptık. 
+
+#### örnek:
+ 
+https://m.media-amazon.com/images/M/MV5BMjAxMzY3NjcxNF5BMl5BanBnXkFtZTcwNTI5OTM0Mw@@._V1_UX67_CR0,0,67,98_AL_.jpg
+
+Bu linkin sonuna ve başına html kodlarını yazınca sitede resim gözükebilir hale geliyor
+
+
+```
+<img src="https://m.media-amazon.com/images/M/MV5BMjAxMzY3NjcxNF5BMl5BanBnXkFtZTcwNTI5OTM0Mw@@._V1_UX67_CR0,0,67,98_AL_.jpg">
+```
+ve sitede böyle gözüküyor : <img src="https://m.media-amazon.com/images/M/MV5BMjAxMzY3NjcxNF5BMl5BanBnXkFtZTcwNTI5OTM0Mw@@._V1_UX67_CR0,0,67,98_AL_.jpg">
