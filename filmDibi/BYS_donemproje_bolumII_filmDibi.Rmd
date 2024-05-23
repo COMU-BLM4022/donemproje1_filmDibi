@@ -210,3 +210,7 @@ Film puanlama sitesi projesinin ana hedefi, kullanıcıların film izleme ve pua
 4. **Kullanıcı Davranış Analizi:** Kullanıcıların izleme alışkanlıkları tespit edilerek, 3. parti şirketlerle veri paylaşımı yapılacak ve kişiselleştirilmiş reklam stratejileri geliştirilecek.
 
 Bu analizler sayesinde, film puanlama sitesi kullanıcılarına daha iyi hizmet sunabilir, reklam gelirlerini artırabilir ve film endüstrisine yönelik değerli içgörüler elde edebilir.
+
+# Q6: Çalışan platformun gösterildiği sesli anlatımlı video
+
+https://youtu.be/1B-Xnw0NvvA?feature=shared
