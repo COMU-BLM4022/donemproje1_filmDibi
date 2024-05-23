@@ -167,3 +167,46 @@ Hangi yönetmenin filmlerinin en çok beğenildiği ve hangi yönetmenin filmler
 # Q4: Veri setinin BYS platformuna ithali 
 
   Veri setimizi Worpress'e **table press** ile *.csv* formatında yükledik . 
+  
+# Q5: Yapılması Planlanan Veri Analizi
+
+### Projenin Hedefi
+
+Film puanlama sitesi projesinin ana hedefi, kullanıcıların film izleme ve puanlama alışkanlıklarını analiz ederek, kişiselleştirilmiş öneriler sunmak ve reklam stratejilerini optimize etmektir. Ayrıca, film stüdyolarına gelecekte çekilecek filmler için stratejik kararlar almalarına yardımcı olacak trend analizleri sağlamaktır.
+
+### Kritik Analizlerin Planlaması
+
+#### 1. Veri Setlerinin Birleştirilmesi
+
+- **Veri Kaynakları:** Kaggle'dan bulduğumuz imdb data ile  film bilgileri (film adı, tür, oyuncular, yönetmen, puanlar vb.).
+
+#### 2. Veri Setinin Kategorilere Ayrılması
+
+- **Analiz Yöntemleri:** Her kategori için izlenme ve puanlama eğilimleri incelenecek. Bu, farklı kullanıcı segmentleri için özelleştirilmiş öneri ve reklam stratejileri geliştirilmesini sağlayacak.
+
+
+#### 3. Grafiksel ve İstatistiksel Analiz
+
+- **Grafikler:** Kullanıcıların izleme alışkanlıkları, film türlerine göre dağılımlar ve zaman içindeki trendler grafiklerle gösterilecek.
+- **İstatistiksel Operasyonlar:** Ortalama puanlar, medyan değerler ve diğer temel istatistiksel analizler yapılacak. Bu analizler, kullanıcı davranışlarını daha iyi anlamak ve trendleri tespit etmek için kullanılacak.
+
+#### 4. Klasik İstatistiksel Operasyonlar
+
+- **Ortalama ve Median Hesaplamaları:** Film türlerine ve kullanıcılara göre ortalama ve medyan puanlar hesaplanacak.
+- **Sonuçların Değerlendirilmesi:** Elde edilen istatistiksel sonuçlar üzerinden film öneri sistemlerinin ve reklam stratejilerinin etkinliği değerlendirilecek.
+
+
+### Analiz Sonuçlarının Sunumu
+
+- **Sayısal ve Tablosal Sunum:** Elde edilen veriler sayısal olarak özetlenecek ve tablolar halinde sunulacak.
+- **Grafiksel Sunum:** Önemli bulgular grafikler aracılığıyla görselleştirilecek.
+- **Raporlama ve Tavsiyeler:** Model performans raporları ve elde edilen sonuçlara dayanarak stratejik çözüm önerileri sunulacak.
+
+### Örnek Analiz Senaryoları
+
+1. **Film Öneri Sistemi:** Kullanıcının izlediği ve puanladığı filmler baz alınarak, beğenebileceği yeni filmler önerilecek.
+2. **Reklam Stratejisi:** Kullanıcıların izlediği film türlerine göre kişiselleştirilmiş reklamlar gösterilecek.
+3. **Film Trend Analizi:** Kullanıcıların son dönemlerde beğendiği film türleri belirlenerek, film stüdyolarına gelecek projeleri için önerilerde bulunulacak.
+4. **Kullanıcı Davranış Analizi:** Kullanıcıların izleme alışkanlıkları tespit edilerek, 3. parti şirketlerle veri paylaşımı yapılacak ve kişiselleştirilmiş reklam stratejileri geliştirilecek.
+
+Bu analizler sayesinde, film puanlama sitesi kullanıcılarına daha iyi hizmet sunabilir, reklam gelirlerini artırabilir ve film endüstrisine yönelik değerli içgörüler elde edebilir.
