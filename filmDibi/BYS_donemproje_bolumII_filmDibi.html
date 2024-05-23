@@ -385,6 +385,58 @@ olanak tanıyan bir sürükle ve bırak form oluşturucu eklentisidir.Bu
 eklentiyle kullanıcılardan bir film girdisi alıyoruz.</li>
 </ul>
 </div>
+<div id="q2-veri-setinin-detayları" class="section level1">
+<h1>Q2: Veri Setinin Detayları</h1>
+<p>IMDb’nin en iyi 1000 film ve TV şovu verilerini içermektedir. Veri
+seti, <a href="https://www.kaggle.com/datasets/harshitshankhdhar/imdb-dataset-of-top-1000-movies-and-tv-shows">Kaggle’dan</a>
+alınmıştır.</p>
+<div id="veri-setinin-içeriği" class="section level3">
+<h3>Veri Setinin İçeriği</h3>
+<p>Veri seti aşağıdaki sütunları içermektedir:</p>
+<ul>
+<li><strong>Poster_Link</strong>: Filmin veya TV şovunun posterinin
+URL’si</li>
+<li><strong>Series_Title</strong>: Filmin veya TV şovunun başlığı</li>
+<li><strong>Released_Year</strong>: Yayınlanma yılı</li>
+<li><strong>Certificate</strong>: Sertifika (ör. PG-13, R)</li>
+<li><strong>Runtime</strong>: Süre</li>
+<li><strong>Genre</strong>: Tür</li>
+<li><strong>IMDB_Rating</strong>: IMDb puanı</li>
+<li><strong>Overview</strong>: Filmin veya TV şovunun özeti</li>
+<li><strong>Meta_score</strong>: Metacritic puanı</li>
+<li><strong>Director</strong>: Yönetmen</li>
+<li><strong>Star1</strong>, <strong>Star2</strong>,
+<strong>Star3</strong>, <strong>Star4</strong>: Başroldeki
+oyuncular</li>
+<li><strong>No_of_Votes</strong>: Oy sayısı</li>
+<li><strong>Gross</strong>: Brüt gelir</li>
+</ul>
+</div>
+<div id="veriyi-toplayanyaratanlar" class="section level3">
+<h3>Veriyi Toplayan/Yaratanlar</h3>
+<p>Bu veri setini oluşturan Harshit Shankhdhar, IMDb web sitesinden
+scraping yaparak bu verileri elde etmiştir. Scraping, web sitelerindeki
+bilgileri programlı bir şekilde toplayarak yapılandırılmış veri haline
+getirme işlemidir.</p>
+</div>
+<div id="veride-yapılan-değişiklikler" class="section level3">
+<h3>Veride Yapılan Değişiklikler</h3>
+<p><strong>Word press’de resimlerin gösterimi</strong>: Poster resimleri
+veride link şeklinde bulunuyordu. Word press’de bu resimlerin
+gözükebilmesi için resimleri html dilinde siteden çekmek gerekiyordu.
+Exxelde poster linki sutunundaki bütün linklerin başına &lt;img src=”
+şeklinde ekleme yaptık.</p>
+<div id="örnek" class="section level4">
+<h4>örnek:</h4>
+<p><a href="https://m.media-amazon.com/images/M/MV5BMjAxMzY3NjcxNF5BMl5BanBnXkFtZTcwNTI5OTM0Mw@@._V1_UX67_CR0,0,67,98_AL_.jpg" class="uri">https://m.media-amazon.com/images/M/MV5BMjAxMzY3NjcxNF5BMl5BanBnXkFtZTcwNTI5OTM0Mw@@._V1_UX67_CR0,0,67,98_AL_.jpg</a></p>
+<p>Bu linkin sonuna ve başına html kodlarını yazınca sitede resim
+gözükebilir hale geliyor</p>
+<pre><code>&lt;img src=&quot;https://m.media-amazon.com/images/M/MV5BMjAxMzY3NjcxNF5BMl5BanBnXkFtZTcwNTI5OTM0Mw@@._V1_UX67_CR0,0,67,98_AL_.jpg&quot;&gt;</code></pre>
+<p>ve sitede böyle gözüküyor :
+<img src="data:image/jpeg;base64,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"></p>
+</div>
+</div>
+</div>
 
 
 
