@@ -163,3 +163,7 @@ print(yonetmen_basari)
 ```
 
 Hangi yönetmenin filmlerinin en çok beğenildiği ve hangi yönetmenin filmlerinin daha çok para kazandırdığına bakarak. Bir sonraki çekilen filmin hangi yönetmen tarafından yönetileceğine karar verilebilir.
+
+# Q4: Veri setinin BYS platformuna ithali 
+
+  Veri setimizi Worpress'e **table press** ile *.csv* formatında yükledik . 
