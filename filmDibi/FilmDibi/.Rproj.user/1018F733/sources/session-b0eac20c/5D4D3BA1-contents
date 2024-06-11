@@ -1,0 +1,245 @@
+---
+title: "Bilgi Yönetim Sistemleri - Bitirme Projesi Rapor :"
+author: 
+  - "Hamza Alpaslan"
+  - "Ömer Faruk Bozkaya"
+  - "Nazik Ashyrova"
+  - "Hameem Alyafai"
+date: "`r Sys.Date()`"
+output: html_document
+---
+
+# Q1: İş probleminin tanımı
+
+  Film öneri işletmesi olarak , kullanıcıların izlediği filmler üzerinden film değerlendirmesi yaparak kullanıcılara önerilerde bulunuyoruz . Veri seti olarak **TMDb API** kullanıyorduk fakat veri miktarının az olması nedeniyle veri setimizi değiştirdik . Yeni veri setimizi **Kaggle**'dan bulduk ve bundan sonra o veri setini kullanacağız . BYS platformu olarak **Wordpress** kullanmamızdaki nedenlerimiz ; Kullanıcı dostu arayüze sahip olması , Geniş tema ve eklenti desteğinin bulunması , açık kaynak olması ve yaygın kullanıma sahip olmasıdır . Platformumuzu oluştururken Worpress'in şu pluginleri kullanmaktayız 
+
+- **TablePress**: WordPress sitenize kolayca tablo eklemenizi sağlayan bir eklentidir. Bu eklenti ile filmler arasından arama yapıp görüntüleyebiliyoruz.
+- **WPForms**:  WordPress sitenizde formlar oluşturmanıza olanak tanıyan bir sürükle ve bırak form oluşturucu eklentisidir.Bu eklentiyle kullanıcılardan bir film girdisi alıyoruz. 
+
+# Q2: Veri Setinin Detayları
+IMDb'nin en iyi 1000 film ve TV şovu verilerini içermektedir. Veri seti, [Kaggle'dan](https://www.kaggle.com/datasets/harshitshankhdhar/imdb-dataset-of-top-1000-movies-and-tv-shows) alınmıştır.
+
+
+### Veri Setinin İçeriği
+
+Veri seti aşağıdaki sütunları içermektedir:
+
+- **Poster_Link**: Filmin veya TV şovunun posterinin URL'si
+- **Series_Title**: Filmin veya TV şovunun başlığı
+- **Released_Year**: Yayınlanma yılı
+- **Certificate**: Sertifika (ör. PG-13, R)
+- **Runtime**: Süre
+- **Genre**: Tür
+- **IMDB_Rating**: IMDb puanı
+- **Overview**: Filmin veya TV şovunun özeti
+- **Meta_score**: Metacritic puanı
+- **Director**: Yönetmen
+- **Star1**, **Star2**, **Star3**, **Star4**: Başroldeki oyuncular
+- **No_of_Votes**: Oy sayısı
+- **Gross**: Brüt gelir
+
+### Veriyi Toplayan/Yaratanlar
+
+Bu veri setini oluşturan Harshit Shankhdhar, IMDb web sitesinden scraping yaparak bu verileri elde etmiştir. Scraping, web sitelerindeki bilgileri programlı bir şekilde toplayarak yapılandırılmış veri haline getirme işlemidir.
+
+### Veride Yapılan Değişiklikler
+
+ **Word press'de resimlerin gösterimi**: Poster resimleri veride link şeklinde bulunuyordu. Word press'de bu resimlerin gözükebilmesi için resimleri html dilinde siteden çekmek gerekiyordu. Exxelde poster linki sutunundaki bütün linklerin başına  <img src=" şeklinde ekleme yaptık. 
+
+#### örnek:
+ 
+https://m.media-amazon.com/images/M/MV5BMjAxMzY3NjcxNF5BMl5BanBnXkFtZTcwNTI5OTM0Mw@@._V1_UX67_CR0,0,67,98_AL_.jpg
+
+Bu linkin sonuna ve başına html kodlarını yazınca sitede resim gözükebilir hale geliyor
+
+
+```
+<img src="https://m.media-amazon.com/images/M/MV5BMjAxMzY3NjcxNF5BMl5BanBnXkFtZTcwNTI5OTM0Mw@@._V1_UX67_CR0,0,67,98_AL_.jpg">
+```
+ve sitede böyle gözüküyor : <img src="https://m.media-amazon.com/images/M/MV5BMjAxMzY3NjcxNF5BMl5BanBnXkFtZTcwNTI5OTM0Mw@@._V1_UX67_CR0,0,67,98_AL_.jpg">
+
+# Q3: Veri seti keşifsel analizi
+
+Veri setinden kullanıcıya sunacağımız veriler olarak tüm sütunlar önemli. Kullanıcıya öneri olarak yapacağımız analiz içinse Genre (Tür), IMDB_Rating, Overview (film özeti), Director, Star1, Star2, Star3, Star4 gibi sütunlar kullanılacak. Veri setimizde eksiklikler, anlamsız veriler bulunmadığı için ön işlem yapmamıza gerek kalmadı.
+
+### Veri Setinin İçeriği
+
+Veri seti aşağıdaki sütunları içermektedir, sütunların veri tipleri: **Runtime** ve **Released_Year** character tipinden numeric tipine dönüştürüldü.
+
+-   **Poster_Link**: character
+-   **Series_Title**: character
+-   **Released_Year**: numeric
+-   **Certificate**: character
+-   **Runtime**: numeric
+-   **Genre**: character
+-   **IMDB_Rating**: double
+-   **Overview**: character
+-   **Meta_score**: double
+-   **Director**: character
+-   **Star1**, **Star2**, **Star3**, **Star4**: character
+-   **No_of_Votes**: double
+-   **Gross**: numeric
+
+```{r, echo=FALSE, message=FALSE, warning=FALSE}
+# Gerekli paketleri yükleme
+options(repos = c(CRAN = "https://cran.rstudio.com"))
+
+if (!requireNamespace("dplyr", quietly = TRUE)) {
+  install.packages("dplyr")
+}
+if (!requireNamespace("ggplot2", quietly = TRUE)) {
+  install.packages("ggplot2")
+}
+if (!requireNamespace("tidyr", quietly = TRUE)) {
+  install.packages("tidyr")
+}
+if (!requireNamespace("downloader", quietly = TRUE)) {
+  install.packages("downloader")
+}
+
+library(dplyr)
+library(ggplot2)
+library(tidyr)
+
+# CSV dosyasını okuma
+IMDB_data <- read.csv("imdb_top_1000 (1).csv")
+
+# Released_Year ve Runtime sütunlarını numeric tipine dönüştürme
+IMDB_data$Released_Year <- as.numeric(as.character(IMDB_data$Released_Year))
+IMDB_data$Runtime <- as.numeric(as.character(IMDB_data$Runtime))
+
+# Gross sütununu numeric tipine dönüştürme
+IMDB_data$Gross <- as.numeric(gsub(",", "", as.character(IMDB_data$Gross)))
+
+
+# Tür sütununu düzenleme (tür kombinasyonlarını ayırma)
+IMDB_data$Genre <- gsub("/", ",", IMDB_data$Genre)
+IMDB_data <- IMDB_data %>%
+  mutate(Genre = strsplit(as.character(Genre), ",")) %>%
+  unnest(Genre)
+
+# Türlerin dağılımını hesaplama
+tur_dagilimi <- IMDB_data %>%
+  group_by(Genre) %>%
+  summarise(film_sayisi = n()) %>%
+  arrange(desc(film_sayisi))
+
+# Türlerin dağılımını görselleştirme
+ggplot(tur_dagilimi[1:10, ], aes(x = reorder(Genre, film_sayisi), y = film_sayisi)) +
+  geom_col(fill = "steelblue") +
+  labs(title = "En Popüler Türlerin Dağılımı", x = "Tür", y = "Film Sayısı") +
+  coord_flip() +
+  theme_minimal()
+
+```
+
+Vei setimiz imdbnin en yüksek puan alan 1000 filmini içeriyor. Bu 1000 film içinde en çok sayıda olanlar drama filmleri. Demek ki insanlar drama filmlerine yüksek puanlar veriyor
+
+```{r, echo=FALSE, message=FALSE, warning=FALSE}
+# Türlerin yıllara göre gelirini hesaplama
+gelir_turlere_gore <- IMDB_data %>%
+  group_by(Genre, Released_Year) %>%
+  summarise(toplam_gelir = sum(Gross, na.rm = TRUE)) %>%
+  arrange(Genre, Released_Year)
+
+# İstenen türlerin listesi
+istenilen_turler <- c("Action", "Comedy", "Drama", "Horror", "Western")
+
+# Türlerin yıllara göre gelirini hesaplama ve istenilen türleri filtreleme
+gelir_turlere_gore_filtreli <- gelir_turlere_gore %>%
+  filter(Genre %in% istenilen_turler)
+
+# Çizgi grafiği oluşturma
+ggplot(gelir_turlere_gore_filtreli, aes(x = Released_Year, y = toplam_gelir, color = Genre)) +
+  geom_line() +
+  labs(title = "Belirli Türlerin Yıllara Göre Geliri", x = "Yıl", y = "Toplam Gelir") +
+  theme_minimal() +
+  theme(axis.text.x = element_text(angle = 45, hjust = 1))
+```
+
+Bu grafiğe ve yukardaki grafiğe bakarak: İnsanlar drama filmlerini seviyor ama aksiyon filmlerine para harcıyor yorumunu yapabiliriz.
+
+```{r, echo=FALSE, message=FALSE, warning=FALSE}
+# Türlerin yıllara göre gelirini hesaplama
+MDB_data <- na.omit(IMDB_data)
+
+# Yönetmen başarı tablosunu oluşturma
+yonetmen_basari <- IMDB_data %>%
+  group_by(Director) %>%
+  summarise(
+    ortalama_puan = mean(IMDB_Rating, na.rm = TRUE),
+    toplam_gelir = sum(Gross, na.rm = TRUE)
+  ) %>%
+  arrange(desc(ortalama_puan), desc(toplam_gelir))
+
+# Tabloyu görüntüleme
+print(yonetmen_basari)
+```
+
+Hangi yönetmenin filmlerinin en çok beğenildiği ve hangi yönetmenin filmlerinin daha çok para kazandırdığına bakarak. Bir sonraki çekilen filmin hangi yönetmen tarafından yönetileceğine karar verilebilir.
+
+# Q4: Veri setinin BYS platformuna ithali 
+
+  Veri setimizi Worpress'e **table press** ile ***.csv*** formatında yükledik . 
+  
+# Q5: Yapılması Planlanan Veri Analizi
+
+### Projenin Hedefi
+
+Film puanlama sitesi projesinin ana hedefi, kullanıcıların film izleme ve puanlama alışkanlıklarını analiz ederek, kişiselleştirilmiş öneriler sunmak ve reklam stratejilerini optimize etmektir. Ayrıca, film stüdyolarına gelecekte çekilecek filmler için stratejik kararlar almalarına yardımcı olacak trend analizleri sağlamaktır.
+
+### Kritik Analizlerin Planlaması
+
+#### 1. Veri Setlerinin Birleştirilmesi
+
+- **Veri Kaynakları:** Kaggle'dan bulduğumuz imdb data ile  film bilgileri (film adı, tür, oyuncular, yönetmen, puanlar vb.).
+- **Birleştirme Yöntemi:** Film ID'leri ve kullanıcı ID'leri üzerinden veriler birleştirilecek.
+- **Neden Gerekli:** Kullanıcı davranışlarını daha iyi analiz etmek ve zengin bir veri seti oluşturmak için gereklidir. Bu, kişiselleştirilmiş öneriler sunmak için daha kapsamlı bir temel sağlar.
+
+#### 2. Veri Setinin Kategorilere Ayrılması
+
+- **Kategoriler:** Film türleri (aksiyon, dram, komedi vb.).
+- **Analiz Yöntemleri:** Her kategori için izlenme ve puanlama eğilimleri incelenecek. Bu, farklı kullanıcı segmentleri için özelleştirilmiş öneri ve reklam stratejileri geliştirilmesini sağlayacak.
+
+#### 3. Sentetik Veri Üretimi ve Senaryo Analizi
+
+- **Sentetik Veriler:** Kullanıcıların film izleme alışkanlıklarını modellemek için oluşturulacak.
+- **Senaryo:** Kullanıcıların belirli film türlerine olan ilgisinin artması durumunda öneri algoritmalarının nasıl değişeceği analiz edilecek.
+- **Karar Mekanizmaları:** Her senaryo için öneri sistemlerinin ve reklam stratejilerinin nasıl optimize edileceği belirlenecek.
+
+
+#### 4. Grafiksel ve İstatistiksel Analiz
+
+- **Grafikler:** Kullanıcıların izleme alışkanlıkları, film türlerine göre dağılımlar ve zaman içindeki trendler grafiklerle gösterilecek.
+- **İstatistiksel Operasyonlar:** Ortalama puanlar, medyan değerler ve diğer temel istatistiksel analizler yapılacak. Bu analizler, kullanıcı davranışlarını daha iyi anlamak ve trendleri tespit etmek için kullanılacak.
+
+#### 5. Klasik İstatistiksel Operasyonlar
+
+- **Ortalama ve Median Hesaplamaları:** Film türlerine ve kullanıcılara göre ortalama ve medyan puanlar hesaplanacak.
+- **Sonuçların Değerlendirilmesi:** Elde edilen istatistiksel sonuçlar üzerinden film öneri sistemlerinin ve reklam stratejilerinin etkinliği değerlendirilecek.
+
+#### 6. Veri Setlerinin Birleştirilmesi ve Analiz
+
+- **Join Operasyonu:** Kullanıcı ve film verileri “key” kullanılarak birleştirilecek.
+- **Gerekçelendirme:** Birleştirilen veri setleri, daha kapsamlı analizler yapılmasına olanak tanıyacak, böylece kullanıcı davranışlarını daha derinlemesine incelemek mümkün olacak.
+
+### Analiz Sonuçlarının Sunumu
+
+- **Sayısal ve Tablosal Sunum:** Elde edilen veriler sayısal olarak özetlenecek ve tablolar halinde sunulacak.
+- **Grafiksel Sunum:** Önemli bulgular grafikler aracılığıyla görselleştirilecek.
+- **Raporlama ve Tavsiyeler:** Model performans raporları ve elde edilen sonuçlara dayanarak stratejik çözüm önerileri sunulacak.
+
+### Örnek Analiz Senaryoları
+
+1. **Film Öneri Sistemi:** Kullanıcının izlediği ve puanladığı filmler baz alınarak, beğenebileceği yeni filmler önerilecek.
+2. **Reklam Stratejisi:** Kullanıcıların izlediği film türlerine göre kişiselleştirilmiş reklamlar gösterilecek.
+3. **Film Trend Analizi:** Kullanıcıların son dönemlerde beğendiği film türleri belirlenerek, film stüdyolarına gelecek projeleri için önerilerde bulunulacak.
+4. **Kullanıcı Davranış Analizi:** Kullanıcıların izleme alışkanlıkları tespit edilerek, 3. parti şirketlerle veri paylaşımı yapılacak ve kişiselleştirilmiş reklam stratejileri geliştirilecek.
+
+Bu analizler sayesinde, film puanlama sitesi kullanıcılarına daha iyi hizmet sunabilir, reklam gelirlerini artırabilir ve film endüstrisine yönelik değerli içgörüler elde edebilir.
+
+# Q6: Çalışan platformun gösterildiği sesli anlatımlı video
+
+[youtube](https://www.youtube.com/watch?v=1B-Xnw0NvvA)
+
+
